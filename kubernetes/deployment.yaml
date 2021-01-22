@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devops-test-backend
+spec:
+  selector:
+    matchLabels:
+      app: devops-test-backend
+  template:
+    metadata:
+      labels:
+        app: devops-test-backend
+    spec:
+      containers:
+        - name: devops-test-backend
+          image: user/devops-test-frontend:tag
+          resources:
+            limits:
+              memory: '128Mi'
+              cpu: '500m'
+          ports:
+            - containerPort: 5000
